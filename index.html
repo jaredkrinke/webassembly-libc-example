@@ -1,0 +1,14 @@
+<html>
+    <body>
+        <p>The value of sin(1.57) is <span id="result">?</span></p>
+
+        <script>
+            (async () => {
+                const buffer = await (await fetch("./sine.wasm")).arrayBuffer();
+                const module = await WebAssembly.instantiate(buffer);
+                const sine = module.instance.exports.sine;
+                document.getElementById("result").innerText = sine(1.57);
+            })();
+        </script>
+    </body>
+</html>

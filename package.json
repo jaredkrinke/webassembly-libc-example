@@ -1,0 +1,13 @@
+{
+  "name": "webassembly-libc-example",
+  "description": "Trivial example of using a C standard library (from the WASI SDK) in WebAssembly",
+  "main": "sine.js",
+  "scripts": {
+    "build": "./wasi-sdk/bin/clang -Os --sysroot wasi-sdk/share/wasi-sysroot -nostartfiles -Wl,--no-entry sine.c -o sine.wasm",
+    "buildOnWindows": "wasi-sdk\\bin\\clang -Os --sysroot wasi-sdk/share/wasi-sysroot -nostartfiles -Wl,--no-entry sine.c -o sine.wasm",
+    "serve": "npx http-server ."
+  },
+  "devDependencies": {
+    "http-server": "^13.0.2"
+  }
+}
